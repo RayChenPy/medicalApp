@@ -7,7 +7,7 @@ import Login from "../../pages/Login";
 export default function home() {
   return (
     <>
-      <Login />
+      
     </>
   );
 }
