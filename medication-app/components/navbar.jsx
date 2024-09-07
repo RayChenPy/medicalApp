@@ -11,24 +11,19 @@ const Navbar = () => {
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item active">
-							<a className="nav-link" href="#">Home <span className="sr-only"></span></a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">My Medications</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">My Calendar</a>
-						</li>
-						<li className="nav-item">
-							<Link href="/Login">
-								Log in
+							<Link className="nav-link" href="/">
+								Home
 							</Link>
 						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	)
-}
-
-export default Navbar
+						<li className="nav-item">
+							<Link className="nav-link" href="/Medication">
+								My Medications
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" href="/Calendar">
+								My Calendar
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link className="nav-link" href="/Login">
