@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '@mui/material'
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const Signup = () => {
 
@@ -22,7 +22,9 @@ const Signup = () => {
 	
 
 	const register = async () => {
+		
 		console.log('test');
+		console.log('backendUrl: ', backendUrl);
 		try {
 			const response = await fetch(`${backendUrl}/signup`, {
 			  method: 'POST',

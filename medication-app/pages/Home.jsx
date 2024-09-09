@@ -6,3 +6,8 @@ const Home = () => {
 	<>
 		<Navbar />
 		{/* <p>This is home page!</p> */}
+	</>
+  )
+}
+
+export default Home

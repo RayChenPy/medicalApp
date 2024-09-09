@@ -13,8 +13,15 @@ mongoose
 
 //set up express
 const express = require("express");
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST']
+}
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+app.use(cors(corsOptions));
 
 // Optional: Parse URL-encoded bodies (for form submissions)
 app.use(express.urlencoded({ extended: true })); //can see body, but empty, only after using this
@@ -83,7 +90,7 @@ app.post("/signup", async (req, res) => {
     newUser.password = hashedPassword;
   
     await newUser.save();
-    return res.json({"newUser" : newUser})
+    return  res.status(201).json({ message: 'User registered successfully' });
 
     // try {
     //   const { username, email, password, firstname, lastname } = req.body;
@@ -97,7 +104,6 @@ app.post("/signup", async (req, res) => {
     //     res.status(500).json({ message: 'Error registering user', error });
     // }
 
-    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
       res.status(500).json({ message: 'Error registering user', error });
   }

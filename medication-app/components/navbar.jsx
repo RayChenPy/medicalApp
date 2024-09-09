@@ -27,3 +27,14 @@ const Navbar = () => {
 						</li>
 						<li className="nav-item">
 							<Link className="nav-link" href="/Login">
+								Log in
+							</Link>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	)
+}
+
+export default Navbar
