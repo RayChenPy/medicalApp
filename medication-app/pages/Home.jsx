@@ -5,4 +5,9 @@ const Home = () => {
   return (
 	<>
 		<Navbar />
-		{/* <p>This is home page!</p> 
+		{/* <p>This is home page!</p> */}
+	</>
+  )
+}
+
+export default Home

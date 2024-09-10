@@ -10,4 +10,6 @@ export default function home() {
     <>
       {/* <Signup /> */}
       <Home/>
-    <
+    </>
+  );
+}
