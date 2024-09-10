@@ -56,11 +56,7 @@ app.post("/medication/:userid", async (req, res) => {
 
 app.post("/signup", async (req, res) => {
 
-  //hardcoded
-  // console.log("req.params.userid:", req.params.userid);
-
-  //passed by Postman
-  console.log("req.body: ", req.body);
+  // console.log("req.body: ", req.body);
   const { username, email, password, firstname, lastname } = req.body;
   try{
     const existingUser = await User.findOne({email});
@@ -68,17 +64,7 @@ app.post("/signup", async (req, res) => {
     if(existingUser){
       return res.status(400).json({ message: 'Email already in use' });
     } 
-    //hardcoded
-    // const newUser = new User({
-    //   username: req.params.userid,
-    //   email:"test.com",
-    //   password: "testest",
-    //   firstname: "Jane",
-    //   lastname: "doe"
-    // });
 
-    
-    //passed by Postman
     const newUser = new User({
       username,
       email,
@@ -92,22 +78,27 @@ app.post("/signup", async (req, res) => {
     await newUser.save();
     return  res.status(201).json({ message: 'User registered successfully' });
 
-    // try {
-    //   const { username, email, password, firstname, lastname } = req.body;
-
-    //   // Create a new user in MongoDB
-    //   const newUser = new User({ username, email, password, firstname, lastname });
-    //   await newUser.save();
-
-    //   res.status(201).json({ message: 'User registered successfully' });
-    // } catch (error) {
-    //     res.status(500).json({ message: 'Error registering user', error });
-    // }
-
   } catch (error) {
       res.status(500).json({ message: 'Error registering user', error });
   }
 });
+
+app.post("/login", async (req, res) => {
+  console.log('req.body: ', req.body);
+  const { username, password } = req.body;
+  const user = await User.findOne({username});
+  if(user){
+    const hashedPassword = newUser.generateHash(password);
+    if(hashedPasswrod === user.password){
+      //navigate to home page
+    }else{
+      //the username or password doesn't exist
+    }
+  }else{
+    //the username or password doesn't exist
+  }
+  return res.json({message:'test login'});
+})
 
 
 
