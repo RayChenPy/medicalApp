@@ -87,17 +87,17 @@ app.post("/login", async (req, res) => {
   console.log('req.body: ', req.body);
   const { username, password } = req.body;
   const user = await User.findOne({username});
+  console.log('user:', user);
   if(user){
-    const hashedPassword = newUser.generateHash(password);
-    if(hashedPasswrod === user.password){
-      //navigate to home page
-    }else{
-      //the username or password doesn't exist
+    const isPasswordValid = user.validPassword(password);
+    console.log('isPasswordValid: ', isPasswordValid);
+    //navigate to home page
+    if(isPasswordValid){
+      return res.redirect('/');
     }
-  }else{
-    //the username or password doesn't exist
+    return res.status(401).json({message: 'username or password error'});
   }
-  return res.json({message:'test login'});
+  return res.status(401).json({message: 'username or password error'});
 })
 
 

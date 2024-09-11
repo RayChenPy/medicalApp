@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './css/Login.css'
+import { useRouter } from 'next/router';
 import { Button } from '@mui/material'
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
 
@@ -18,6 +19,7 @@ const Login = () => {
 		});
 	};
 
+	const router = useRouter();
 
 	const login = async () => {
 		console.log('login test');
@@ -28,7 +30,9 @@ const Login = () => {
 				  'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(formData),
-			  });
+			});
+			router.push('/Home');
+
 		}catch(error){
 			console.error('Error:', error);
 		}
@@ -70,8 +74,9 @@ const Login = () => {
 				</Button>
 
 				<div className='signUp-link'>
-					<p>Don&apost;t have an account?  
-						<a href='#'> Sign up here!</a></p>
+					<p>Don&apos;t have an account?  
+						<a href='/Signup'> Sign up here!</a>
+					</p>
 				</div>
 			</div>
 		</>
